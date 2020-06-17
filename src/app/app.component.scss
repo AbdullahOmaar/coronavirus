@@ -1,0 +1,21 @@
+
+.image {
+  background-image: url(https://cdn.pixabay.com/photo/2020/02/10/04/56/virus-4835301_1280.jpg);
+  
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color:#464646;
+  min-height: 1000px;
+
+
+
+}
+
+@media only screen and (max-width: 767px) {
+  body {
+     background-image: url(https://cdn.pixabay.com/photo/2020/02/10/04/56/virus-4835301_1280.jpg);
+    }
+	}
+

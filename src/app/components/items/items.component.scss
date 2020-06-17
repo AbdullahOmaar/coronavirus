@@ -1,0 +1,37 @@
+.aa{
+
+    text-align: center;
+}
+
+.example-card {
+    max-width: 200px;
+    min-width: 200px;
+    display:inline-block;
+    margin:0px 10px 10px 0px;
+  }
+  .container{
+    max-width:775px;
+  }
+  
+
+
+  table,  td {
+    border: 1px ;
+    // border-collapse: collapse;
+    padding: 5px;
+
+  }
+  th {
+    border: 1px ;
+    margin-right: 10px;
+    font-weight: bolder;
+    font-size: large;
+  }
+  table tr:nth-child(odd) {
+    background-color: #f1f1f1;
+  }
+  
+  table tr:nth-child(even) {
+    background-color: #ffffff;
+
+  }    

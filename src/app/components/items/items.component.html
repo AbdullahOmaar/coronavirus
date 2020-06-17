@@ -1,0 +1,138 @@
+<!-- *ngIf="items?.length > 0; else noItems" hidden -->
+<div >
+    <ul *ngFor="let item of items" class="collection"  >
+        <li (click)="deleteItem($event, item)" class="colliction-item"> <strong>{{item.title}} :  </strong> {{ item.description}}
+         <a href="#" class="secondary-content"> 
+            <i (click)="editItem($event, item)" class="fa fa-pencil"></i>
+            <i *ngIf="editState && itemToEdit.id == item.id" (click)="clearState()" class="fa fa-compress"></i>
+          </a>
+            <div *ngIf="editState && itemToEdit.id == item.id">
+                <form (ngSubmit)="updateItem(item)">
+                    <div class="row">
+                      <div class="input-field col s6">
+                        <input type="text" placeholder="Add-Title" [(ngModel)]="item.recovered" name="title">
+                    </div>
+                    <div class="input-field col s6">
+                        <input type="text" placeholder="Add-Title" [(ngModel)]="item.recovered" name="title">
+                    </div>
+                    <div class="input-field col s6">
+                        <input type="text" placeholder="Add-Description" [(ngModel)]="item.description" name="description">
+                    </div>
+                        <input type="submit" value="Ubdate item" class="btn orange">
+                        <button (click)="deleteItem($event, item)" class="btn red" >Delete item</button>
+                    </div>
+                </form>
+            </div>
+
+        </li>
+
+    </ul>
+</div>
+
+
+
+
+
+<div style="text-align: center;" >
+
+<table class="table table-bordered table-striped table-dark"  style="max-height: 700px;" hidden>
+    <thead>
+      <tr>
+        <th scope="col" class="aa">#</th>
+        <th scope="col" class="aa">التاريخ </th>
+        <th scope="col" class="aa">الحالات الجديده</th>
+        <th scope="col" class="aa">عدد الوفيات</th>
+        <th scope="col" class="aa"> الخروج من المستشفي</th>
+        <th scope="col" class="aa">تحولت من ايجابي الي سلبي</th>
+        <th scope="col" class="aa">اجمالي الوفيات</th>
+        <th scope="col" class="aa">اجمالي المصابين</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr  *ngFor="let item of dataSource.data" style="text-align: center;" (click)="deleteItem($event, item)" >
+        <th class="aa" scope="row">1</th>
+        <td class="aa">{{item.date }} </td>
+        <td class="aa">{{item.newCases}} </td>
+        <td class="aa">{{item.newDeaths}}</td>
+        <td class="aa">{{item.recovered}}</td>
+        <td class="aa">{{item.recovered}} </td>
+        <td class="aa">{{item.totalDeath}}</td>
+        <td class="aa">{{item.totalCases}}</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <ng-template #noItems>
+    <hr>
+    <h5>There are no data </h5>
+</ng-template>
+</div>
+
+
+
+<div class="mat-elevation-z8 "  >
+  <table mat-table [dataSource]="dataSource"  >
+
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef> Date </th>
+      <td mat-cell *matCellDef="let element"> {{element.date }}     
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="newCases">
+      <th mat-header-cell *matHeaderCellDef> New Cases </th>
+      <td mat-cell *matCellDef="let element"> {{element.newCases}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="newDeaths">
+      <th mat-header-cell *matHeaderCellDef> New Deaths </th>
+      <td mat-cell *matCellDef="let element"> {{element.newDeaths}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="hospitalEX">
+      <th mat-header-cell *matHeaderCellDef> Hospital EX </th>
+      <td mat-cell *matCellDef="let element"> {{element.hospitalEX}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="recovered">
+      <th mat-header-cell *matHeaderCellDef> Recovered </th>
+      <td mat-cell *matCellDef="let element"> {{element.recovered}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="totalDeath"> 
+      <th mat-header-cell *matHeaderCellDef> Total Death </th>
+      <td mat-cell *matCellDef="let element"> {{element.totalDeath}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="totalCases">
+      <th mat-header-cell *matHeaderCellDef> Total Cases </th>
+      <td mat-cell *matCellDef="let element"> {{element.totalCases }} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="description" > 
+      <mat-header-cell  *matHeaderCellDef >  </mat-header-cell>
+      <mat-cell *matCellDef="let row" >
+        <button mat-button type="button" class="btn btn-primary" (click)="deleteItem($event,row)"type="button" class="btn btn-primary"  style="margin-top: 10px;margin-right: 0px;">Delete Item</button>
+      </mat-cell>
+      <th mat-header-cell *matHeaderCellDef> totalDeath </th>
+      <td mat-cell *matCellDef="let element"> {{element.totalDeath}} </td>
+    </ng-container>
+    <!-- <ng-container matColumnDef="actions">
+      <mat-header-cell  *matHeaderCellDef > Actions </mat-header-cell>
+      <mat-cell *matCellDef="let row" >
+           <button mat-button >Edit</button>
+      </mat-cell>
+    </ng-container> -->
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;  ">
+      <button type="button" class="btn btn-primary" (click)="deleteItem($event,row)"></button>
+    </tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[10, 5]" showFirstLastButtons></mat-paginator>
+</div>
+
+

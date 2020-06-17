@@ -1,0 +1,119 @@
+<!-- Button trigger modal -->
+<div class="modal-footer">
+  <button type="button" class="btn btn-primary" (click)="myExperience()" data-toggle="modal" data-target="#exampleModal" >Add your Experience</button>
+  <button type="button" class="btn btn-primary" (click)="myExperience()" >   My Experience</button>
+  <button type="button" class="btn btn-primary" (click)="Cases()">   Cases </button>
+
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="max-width: 580px; max-height:430px;" >
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Log in </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="input-field col s3">
+            <input type="text" placeholder="" [(ngModel)]="item.name" name="name">
+            <label>name</label>
+        </div>
+        <div class="input-field col s3">
+            <input type="text" placeholder="" [(ngModel)]="item.password" name="password">
+            <label>password</label>
+        </div>
+    </div>
+      <div  class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" data-toggle="modal" data-target=".bd-example-modal-lg" >Add Item</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" style="margin-left: 10px;">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+  aria-hidden="true" style="max-width: 780px;MAX-height:370PX ; overflow: hidden;margin-top: 0px;">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="">
+        <div class="card content" >
+          <form (ngSubmit)="onSubmit()" class="cole s6" *ngIf="item.name == 'admin'">
+            <div class="row">
+              <div class="input-field col s4">
+                <input type="date" placeholder="" [(ngModel)]="item.date" name="title">
+                <label>التاريخ</label>
+              </div>
+              <div class="input-field col s6">
+                <input type="text" placeholder="" [(ngModel)]="item.newCases" name="title">
+                <label>الحالات الجديده</label>
+              </div>
+              <div class="input-field col s6">
+                <input type="text" placeholder="" [(ngModel)]="item.newDeaths" name="description">
+                <label>عدد الوفيات</label>
+              </div>
+            </div>
+            <div class="row">
+
+              <div class="input-field col s3">
+                <input type="text" placeholder="" [(ngModel)]="item.hospitalEX" name="title">
+                <label>الخروج من المستشفي</label>
+              </div>
+              <div class="input-field col s6">
+                <input type="text" placeholder="" [(ngModel)]="item.recovered" name="description">
+                <label>تحولت من ايجابي الي سلبي</label>
+              </div>
+              <div class="input-field col s6">
+                <input type="text" placeholder="" [(ngModel)]="item.totalDeath" name="description">
+                <label>اجمالي الوفيات</label>
+              </div>
+              <div class="input-field col s6">
+                <input type="text" placeholder="" [(ngModel)]="item.totalCases" name="description">
+                <label>اجمالي المصابين</label>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <input type="submit" value="submit" class="btn btn-primary" >
+              <button type="button" class="btn btn-secondary" data-dismiss="modal" style="margin-left: 10px;">Close</button>
+
+            </div>
+
+          </form>
+          <div>
+            <div class=""  *ngIf="item.name != 'admin'">
+              <form (ngSubmit)="onSubmit2()" class="cole s6">
+                <div class="row">
+                  <div class="input-field col s4">
+                    <input type="text" placeholder="" [(ngModel)]="experience.name" name="title">
+                    <label>Name</label>
+                  </div>
+                
+                  <div class="input-field col s4">
+                    <input type="date" placeholder="" [(ngModel)]="experience.date" name="title">
+                    <label>Date</label>
+                  </div>
+                
+                </div>
+                <div class="row">
+    
+                  <div class="input-field col s4">
+                    <input type="text" placeholder="" [(ngModel)]="experience.description" name="title">
+                    <label>Description</label>
+                  </div>
+              
+                </div>
+                <div class="modal-footer">
+                  <input type="submit" value="submit" class="btn btn-primary" >
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal" style="margin-left: 10px;">Close</button>
+    
+                </div>
+    
+              </form>
+              <div>
+          </div>
+        </div>
+      </div>
+    </div>
